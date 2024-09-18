@@ -10,13 +10,13 @@ type apiConfig struct {
 	fileServeHits int
 }
 
+type Chirp struct {
+	Body string `json:"body"`
+}
+
 type DB struct {
 	path string
 	mux  *sync.RWMutex
-}
-
-type Chirp struct {
-	Body string `json:"body"`
 }
 
 type DBStructure struct {
@@ -27,7 +27,7 @@ func main() {
 	const PORT = "8080"
 
 	apiCfg := &apiConfig{}
-	dbCfg := &DB{}
+	dbCfg := &DB{path: "database.json"}
 
 	mux := http.NewServeMux()
 
